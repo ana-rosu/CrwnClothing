@@ -1,25 +1,22 @@
 import {
-  auth,
   signInWithGooglePopup,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 
+import SignInForm from "../../components/SignInForm/signin-form.component";
 import SignUpForm from "../../components/SignUpForm/signup-form.component";
 
-const SignIn = () => {
-  const logGoogleUser = async () => {
-    const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUserDocumentFromAuth(user);
-  };
+import "./authentication.styles.scss";
+
+const Authentication = () => {
   return (
-    <div>
-      <h1>Sign In</h1>
-      <button onClick={logGoogleUser}> Sign in with Google</button>
+    <div className="authentication-container">
+      <SignInForm />
       <SignUpForm />
     </div>
   );
 };
 
-export default SignIn;
+export default Authentication;
 
 //whenever you navigate away from your website(ex. sign in with google redirecting), you are breaking the instance of the website, and everything is remounting
