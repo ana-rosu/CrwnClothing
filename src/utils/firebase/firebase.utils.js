@@ -5,6 +5,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -69,4 +71,13 @@ export const signInUserEmailPass = async (email, password) => {
   if (!email || !password) return;
 
   return await signInWithEmailAndPassword(auth, email, password);
+};
+export const signOutUser = () => signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => {
+  if (!callback) return;
+  // it will run the callback whenever our authentication state of our auth singleton changes (e.g when our user signs in, when our user signs out)
+  // ! I have to get rid of it when the component unmounts to avoid memory leak
+  onAuthStateChanged(auth, callback);
+  //this onAuthStateChange is building the observer pattern, an asyncronous stream of events (next, error, completed)
 };

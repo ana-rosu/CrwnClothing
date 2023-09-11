@@ -6,16 +6,16 @@ import {
 import FormInput from "../FormInput/form-input.component";
 import "./signup-form.styles.scss";
 import Button from "../Button/button.component";
+import { UserContext } from "../../contexts/user/user.context";
+// object that allows us to keep track of multiple fields inside of our form
+const defaultFormFields = {
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const SignUpForm = () => {
-  // object that allows us to keep track of multiple fields inside of our form
-  const defaultFormFields = {
-    displayName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  };
-
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -36,8 +36,8 @@ const SignUpForm = () => {
         password
       );
       user.displayName = displayName;
+
       resetFormFields();
-      await createUserDocumentFromAuth(user);
     } catch (error) {
       if (error.code === "auth/email-already-in-use")
         alert("Cannot create user, email already in use!");

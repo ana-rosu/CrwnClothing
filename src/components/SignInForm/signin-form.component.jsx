@@ -5,22 +5,24 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
+import { UserContext } from "../../contexts/user/user.context";
+//this UserContext object is going to give us back whatever value is passed in for the value
 import FormInput from "../FormInput/form-input.component";
 import Button from "../Button/button.component";
 
 import "./signin-form.styles.scss";
 
+const defaultFormFields = {
+  email: "",
+  password: "",
+};
+
 const SignInForm = () => {
-  const defaultFormFields = {
-    email: "",
-    password: "",
-  };
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const resetFields = () => {
@@ -34,7 +36,8 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      await signInUserEmailPass(email, password);
+      const { user } = await signInUserEmailPass(email, password);
+
       resetFields();
     } catch (error) {
       if (error.code === "auth/wrong-password") alert("Incorrect password!");
