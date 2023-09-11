@@ -1,12 +1,10 @@
 import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../FormInput/form-input.component";
 import "./signup-form.styles.scss";
 import Button from "../Button/button.component";
-import { UserContext } from "../../contexts/user/user.context";
 // object that allows us to keep track of multiple fields inside of our form
 const defaultFormFields = {
   displayName: "",

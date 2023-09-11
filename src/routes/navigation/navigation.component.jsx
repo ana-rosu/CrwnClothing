@@ -1,18 +1,25 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
+import CartIcon from "../../components/CartIcon/cart-icon.component";
+
+import CartDropdown from "../../components/CartDropdown/cart-dropdown.component";
+
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import { UserContext } from "../../contexts/user/user.context";
+import { UserContext } from "../../contexts/user.context";
+import { CartContext } from "../../contexts/cartItemsContext.component";
 import { signOutUser } from "../../utils/firebase/firebase.utils.js";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
   //useContext hook says whenever a value inside the context has updated/changed re-render me/any component that is listening for current user should in turn update
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
   };
+
   return (
     <Fragment>
       <div className="navigation">
@@ -24,6 +31,7 @@ const Navigation = () => {
           <Link className="nav-link" to="/shop">
             Shop
           </Link>
+          <CartIcon />
           {currentUser ? (
             <span className="nav-link" onClick={signOutHandler}>
               {" "}
@@ -35,6 +43,7 @@ const Navigation = () => {
             </Link>
           )}
         </div>
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>

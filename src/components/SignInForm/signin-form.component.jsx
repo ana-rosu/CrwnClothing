@@ -3,9 +3,7 @@ import { useState } from "react";
 import {
   signInUserEmailPass,
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
-import { UserContext } from "../../contexts/user/user.context";
 //this UserContext object is going to give us back whatever value is passed in for the value
 import FormInput from "../FormInput/form-input.component";
 import Button from "../Button/button.component";
@@ -36,7 +34,7 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInUserEmailPass(email, password);
+      await signInUserEmailPass(email, password);
 
       resetFields();
     } catch (error) {
