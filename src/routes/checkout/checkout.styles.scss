@@ -1,0 +1,16 @@
+.checkout-container {
+  font-size: 1.6rem;
+  width: 55%;
+  margin: 5rem auto 0;
+
+  .checkout-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid darkgray;
+  }
+  .total {
+    margin-left: auto;
+    font-size: 3rem;
+  }
+}
