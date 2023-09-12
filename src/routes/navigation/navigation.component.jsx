@@ -14,7 +14,7 @@ import "./navigation.styles.scss";
 const Navigation = () => {
   //useContext hook says whenever a value inside the context has updated/changed re-render me/any component that is listening for current user should in turn update
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -34,7 +34,6 @@ const Navigation = () => {
           <CartIcon />
           {currentUser ? (
             <span className="nav-link" onClick={signOutHandler}>
-              {" "}
               Sign Out
             </span>
           ) : (
