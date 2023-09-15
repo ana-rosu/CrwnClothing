@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import {
-  BackgroundImage,
-  DirectoryItemBody,
-  DirectoryItemContainer,
+  StyledBackgroundImage,
+  StyledDirectoryItemBody,
+  StyledDirectoryItemContainer,
 } from "./directory-item.styles";
 
 const DirectoryItem = ({ category }) => {
@@ -10,13 +10,13 @@ const DirectoryItem = ({ category }) => {
   const navigate = useNavigate();
   const onNavigateHandler = () => navigate(route);
   return (
-    <DirectoryItemContainer onClick={onNavigateHandler}>
-      <BackgroundImage imageUrl={imageUrl} />
-      <DirectoryItemBody>
+    <StyledDirectoryItemContainer onClick={onNavigateHandler}>
+      <StyledBackgroundImage imageUrl={imageUrl} />
+      <StyledDirectoryItemBody>
         <h2>{title}</h2>
         <p>Shop Now</p>
-      </DirectoryItemBody>
-    </DirectoryItemContainer>
+      </StyledDirectoryItemBody>
+    </StyledDirectoryItemContainer>
   );
 };
 

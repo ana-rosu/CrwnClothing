@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BackgroundImage = styled.div`
+export const StyledBackgroundImage = styled.div`
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -8,7 +8,7 @@ export const BackgroundImage = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-export const DirectoryItemBody = styled.div`
+export const StyledDirectoryItemBody = styled.div`
   height: 90px;
   padding: 0 25px;
   display: flex;
@@ -29,12 +29,13 @@ export const DirectoryItemBody = styled.div`
   }
 
   p {
+    margin: 0;
     font-weight: lighter;
     font-size: 16px;
   }
 `;
 
-export const DirectoryItemContainer = styled.div`
+export const StyledDirectoryItemContainer = styled.div`
   min-width: 30%;
   height: 240px;
   flex: 1 1 auto;
@@ -48,12 +49,12 @@ export const DirectoryItemContainer = styled.div`
   &:hover {
     cursor: pointer;
 
-    & ${BackgroundImage} {
+    & ${StyledBackgroundImage} {
       transform: scale(1.1);
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
 
-    & ${DirectoryItemBody} {
+    & ${StyledDirectoryItemBody} {
       opacity: 0.9;
     }
   }
