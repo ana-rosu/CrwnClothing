@@ -6,7 +6,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 //this UserContext object is going to give us back whatever value is passed in for the value
 import FormInput from "../FormInput/form-input.component";
-import Button from "../Button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../Button/button.component";
 
 import "./signin-form.styles.scss";
 
@@ -69,7 +69,11 @@ const SignInForm = () => {
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type="button" onClick={signInWithGoogle} buttonType="google">
+          <Button
+            type="button"
+            onClick={signInWithGoogle}
+            buttonType={BUTTON_TYPE_CLASSES.google}
+          >
             Google Sign In
           </Button>
         </div>
