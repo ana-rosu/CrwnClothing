@@ -9,6 +9,7 @@ import Checkout from "./routes/checkout/checkout.component";
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
+  getCategoriesAndDocuments,
 } from "./utils/firebase/firebase.utils";
 import { setCurrentUser } from "./store/user/user.action";
 
