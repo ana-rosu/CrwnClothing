@@ -1,6 +1,7 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/user/user.selector";
 import CartIcon from "../../components/CartIcon/cart-icon.component";
 
 import CartDropdown from "../../components/CartDropdown/cart-dropdown.component";
@@ -12,8 +13,10 @@ import { signOutUser } from "../../utils/firebase/firebase.utils.js";
 import "./navigation.styles.scss";
 
 const Navigation = () => {
-  //useContext hook says whenever a value inside the context has updated/changed re-render me/any component that is listening for current user should in turn update
-  const { currentUser } = useContext(UserContext);
+  // selector updates whenever the state object changes
+  // a selector function allows you to extract off the values that you want from the whole entire Redux store
+  const currentUser = useSelector(selectCurrentUser);
+
   const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {

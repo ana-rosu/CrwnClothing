@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
@@ -7,18 +8,21 @@ import { UserProvider } from "./contexts/user.context";
 import "./index.scss";
 import { CategoriesProvider } from "./contexts/categories.context";
 import { CartProvider } from "./contexts/cartItems.context";
+import { store } from "./store/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* <UserProvider> */}
         <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
         </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+        {/* </UserProvider> */}
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
