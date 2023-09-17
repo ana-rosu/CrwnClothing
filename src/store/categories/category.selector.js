@@ -3,17 +3,21 @@ import { createSelector } from "reselect";
 
 // Simple input selector function that extracts specific data from the Redux state (categories property).
 /* state: {user: {currentUser: null}, categories: {categories: []}} */
-const selectCategories = (state) => state.categories;
+const selectCategoriesReducer = (state) => state.categories;
 
 // This memoized selector ensures that the transformation is only performed if the categories data from selectCategories changes.
 export const selectCategoriesMap = createSelector(
-  [selectCategories],
+  [selectCategoriesReducer],
   (categories) =>
     categories.categories.reduce((acc, category) => {
       const { title, items } = category;
       acc[title.toLowerCase()] = items;
       return acc;
     }, {})
+);
+export const selectCategoriesIsLoading = createSelector(
+  [selectCategoriesReducer],
+  (categries) => categries.isLoading
 );
 // categories: Array(5)
 // 0: {items: Array(9), title: 'Hats'}
