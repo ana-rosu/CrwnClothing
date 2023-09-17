@@ -10,12 +10,10 @@ const Category = () => {
   console.log("render/re-rendering category component");
   const { category } = useParams();
   // useSelector runs everytime the state object has updated in the root reducer
-  // however it only re-renders this component if the return of the selector function passed as the argument is different (and rn it always is because the reduce method always starts from a new object so we have many unnecesary re-renders => memoization using a library Reselect)
   const categoriesMap = useSelector(selectCategoriesMap);
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    console.log("effect fired calling setProducts");
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 

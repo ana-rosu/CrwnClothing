@@ -1,13 +1,13 @@
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/user.selector";
-import CartIcon from "../../components/CartIcon/cart-icon.component";
+import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
+import CartIcon from "../../components/CartIcon/cart-icon.component";
 import CartDropdown from "../../components/CartDropdown/cart-dropdown.component";
 
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import { CartContext } from "../../contexts/cartItems.context";
 import { signOutUser } from "../../utils/firebase/firebase.utils.js";
 import "./navigation.styles.scss";
 
@@ -15,8 +15,7 @@ const Navigation = () => {
   // selector updates whenever the state object changes
   // a selector function allows you to extract off the values that you want from the whole entire Redux store
   const currentUser = useSelector(selectCurrentUser);
-
-  const { isCartOpen } = useContext(CartContext);
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   const signOutHandler = async () => {
     await signOutUser();
