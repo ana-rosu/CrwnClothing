@@ -13,6 +13,7 @@ src/contexts/cart.context.jsx
 
 # production
 /build
+.env
 
 # misc
 .DS_Store
@@ -24,3 +25,6 @@ src/contexts/cart.context.jsx
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Local Netlify folder
+.netlify

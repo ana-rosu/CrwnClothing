@@ -4,7 +4,7 @@ import {
   selectCartTotal,
 } from "../../store/cart/cart.selector";
 import CheckoutItem from "../../components/CheckoutItem/checkout-item.component";
-
+import PaymentForm from "../../components/PaymentForm/payment-form.component";
 import "./checkout.styles.scss";
 
 const Checkout = () => {
@@ -25,6 +25,7 @@ const Checkout = () => {
         ))}
       </div>
       <div className="total">Total: {cartTotal}$</div>
+      <PaymentForm/>
     </div>
   );
 };
